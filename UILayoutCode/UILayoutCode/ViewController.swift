@@ -9,12 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
   
+  private let onBoarding = OnBoardingView()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
+    view.addSubview(onBoarding)
     
   }
 
-
 }
-

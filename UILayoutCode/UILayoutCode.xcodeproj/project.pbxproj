@@ -16,7 +16,9 @@
 		DC2EB74B274BB6DE008FD47A /* UILayoutCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2EB74A274BB6DE008FD47A /* UILayoutCodeTests.swift */; };
 		DC2EB755274BB6DE008FD47A /* UILayoutCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2EB754274BB6DE008FD47A /* UILayoutCodeUITests.swift */; };
 		DC2EB757274BB6DE008FD47A /* UILayoutCodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2EB756274BB6DE008FD47A /* UILayoutCodeUITestsLaunchTests.swift */; };
-		DC2EB764274BB74C008FD47A /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2EB763274BB74C008FD47A /* OnBoardingViewController.swift */; };
+		DC2EB764274BB74C008FD47A /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2EB763274BB74C008FD47A /* OnBoardingView.swift */; };
+		DC81868B27523886000D7883 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81868A27523886000D7883 /* UIView+Extension.swift */; };
+		DC81868D275238E1000D7883 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81868C275238E1000D7883 /* UIStackView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +52,9 @@
 		DC2EB750274BB6DE008FD47A /* UILayoutCodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UILayoutCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC2EB754274BB6DE008FD47A /* UILayoutCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayoutCodeUITests.swift; sourceTree = "<group>"; };
 		DC2EB756274BB6DE008FD47A /* UILayoutCodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayoutCodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		DC2EB763274BB74C008FD47A /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		DC2EB763274BB74C008FD47A /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		DC81868A27523886000D7883 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		DC81868C275238E1000D7883 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		DC2EB732274BB6DD008FD47A /* UILayoutCode */ = {
 			isa = PBXGroup;
 			children = (
+				DC81868927523831000D7883 /* Extension */,
 				DC2EB733274BB6DD008FD47A /* AppDelegate.swift */,
 				DC2EB735274BB6DD008FD47A /* SceneDelegate.swift */,
 				DC2EB737274BB6DD008FD47A /* ViewController.swift */,
@@ -108,7 +113,7 @@
 				DC2EB73C274BB6DE008FD47A /* Assets.xcassets */,
 				DC2EB73E274BB6DE008FD47A /* LaunchScreen.storyboard */,
 				DC2EB741274BB6DE008FD47A /* Info.plist */,
-				DC2EB763274BB74C008FD47A /* OnBoardingViewController.swift */,
+				DC2EB763274BB74C008FD47A /* OnBoardingView.swift */,
 			);
 			path = UILayoutCode;
 			sourceTree = "<group>";
@@ -128,6 +133,15 @@
 				DC2EB756274BB6DE008FD47A /* UILayoutCodeUITestsLaunchTests.swift */,
 			);
 			path = UILayoutCodeUITests;
+			sourceTree = "<group>";
+		};
+		DC81868927523831000D7883 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DC81868A27523886000D7883 /* UIView+Extension.swift */,
+				DC81868C275238E1000D7883 /* UIStackView+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +278,9 @@
 				DC2EB738274BB6DD008FD47A /* ViewController.swift in Sources */,
 				DC2EB734274BB6DD008FD47A /* AppDelegate.swift in Sources */,
 				DC2EB736274BB6DD008FD47A /* SceneDelegate.swift in Sources */,
-				DC2EB764274BB74C008FD47A /* OnBoardingViewController.swift in Sources */,
+				DC81868B27523886000D7883 /* UIView+Extension.swift in Sources */,
+				DC2EB764274BB74C008FD47A /* OnBoardingView.swift in Sources */,
+				DC81868D275238E1000D7883 /* UIStackView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
