@@ -26,13 +26,14 @@ class OnBoardingView: UIView {
   private var imageView: UIImageView = {
     let imageView = UIImageView()
     imageView.image = UIImage(named: "onBoardingFier")
-    imageView.contentMode = .scaleAspectFill
+    imageView.contentMode = .scaleToFill
     return imageView
   }()
   
   private let titleLabel: UILabel = {
     let label = UILabel()
-    label.text = "Привет"
+    label.font = UIFont(name: "Halvetica", size: 23)
+    label.text = "Выбор плана питания"
     label.textColor = UIColor.black
     label.numberOfLines = 0
     label.layoutMargins = UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
@@ -41,32 +42,55 @@ class OnBoardingView: UIView {
   
   private let descriptionLabel: UILabel = {
     let label = UILabel()
-    label.text = "Привет"
+    label.text = "8 самых популярных программ питания со всего мира"
     label.textColor = UIColor.black
-    label.numberOfLines = 0
+    label.textAlignment = .center
+    label.numberOfLines = 3
     label.layoutMargins = UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
     return label
   }()
   
+  private let nextButton: UIButton = {
+    let button = UIButton()
+    button.setTitle("Дальше", for: .normal)
+    button.layer.cornerRadius = 25
+    button.layer.backgroundColor = UIColor.systemBlue.cgColor
+    return button
+  }()
+  
   override init(frame: CGRect) {
     super.init(frame: .zero)
-    
-    backgroundColor = UIColor.systemBlue
+    backgroundColor = .systemBackground
     
     addingSubviewsForAutoLayout([
-      contentStackView.addingArrangedSubviews([
+      contentStackView.addingSubviewsForAutoLayout([
         imageView
       ]),
       titleLabel,
-      descriptionLabel
+      descriptionLabel,
+      nextButton
     ])
     
     NSLayoutConstraint.activate([
+      imageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 2),
+      imageView.topAnchor.constraint(equalTo: topAnchor),
+      imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      
+      titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
       titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-      descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)
+      
+      descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+      descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+      
+      nextButton.heightAnchor.constraint(equalToConstant: 50),
+      nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+      nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
     ])
-    titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-    descriptionLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+//    titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+//    descriptionLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
   }
   
   @available(*, unavailable)

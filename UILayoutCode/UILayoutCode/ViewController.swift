@@ -11,11 +11,17 @@ class ViewController: UIViewController {
   
   private let onBoarding = OnBoardingView()
   
+  var onboarding: OnBoardingView { return self.view as! OnBoardingView }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-    view.addSubview(onBoarding)
+    self.view.addSubview(onBoarding)
     
+  }
+  
+  override func loadView() {
+    self.view = OnBoardingView(frame: UIScreen.main.bounds)
   }
 
 }
