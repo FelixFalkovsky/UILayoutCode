@@ -15,10 +15,18 @@ class OnBoardingView: UIView {
   
   private let customView = UIView()
   
-  private let contentStackView: UIStackView = {
+  private let verticalStackView: UIStackView = {
     let stackView = UIStackView()
     stackView.axis = .vertical
     stackView.alignment = .fill
+    stackView.isLayoutMarginsRelativeArrangement = false
+    return stackView
+  }()
+  
+  private let contentTextStackView: UIStackView = {
+    let stackView = UIStackView()
+    stackView.axis = .vertical
+    stackView.alignment = .center
     stackView.isLayoutMarginsRelativeArrangement = false
     return stackView
   }()
@@ -32,7 +40,8 @@ class OnBoardingView: UIView {
   
   private let titleLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont(name: "Halvetica", size: 23)
+    //label.font = UIFont(name: "Halvetica", size: 23)
+    label.font = UIFont.boldSystemFont(ofSize: 23)
     label.text = "Выбор плана питания"
     label.textColor = UIColor.black
     label.numberOfLines = 0
@@ -54,20 +63,23 @@ class OnBoardingView: UIView {
     let button = UIButton()
     button.setTitle("Дальше", for: .normal)
     button.layer.cornerRadius = 25
-    button.layer.backgroundColor = UIColor.systemBlue.cgColor
+    button.layer.backgroundColor = UIColor.systemGreen.cgColor
+    button.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
     return button
   }()
   
   override init(frame: CGRect) {
     super.init(frame: .zero)
     backgroundColor = .systemBackground
-    
+  
     addingSubviewsForAutoLayout([
-      contentStackView.addingSubviewsForAutoLayout([
-        imageView
+      verticalStackView.addingArrangedSubviews([
+        imageView,
+        contentTextStackView.addingArrangedSubviews([
+          titleLabel,
+          descriptionLabel
+        ])
       ]),
-      titleLabel,
-      descriptionLabel,
       nextButton
     ])
     
@@ -77,25 +89,41 @@ class OnBoardingView: UIView {
       imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
       imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
       
-      titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-      titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-      
-      descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-      descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-      
       nextButton.heightAnchor.constraint(equalToConstant: 50),
       nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
       nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
       nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
     ])
-//    titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-//    descriptionLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    descriptionLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
   }
   
   @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  @objc
+  private func nextAction() {
+    print("PRESS")
+  }
+  
+  public func configure(
+    title: String?,
+    description: String?,
+    image: UIImage,
+    buttonTitle: String?
+  ) {
+    titleLabel.text = title
+    titleLabel.isHidden = title == nil
+    
+    descriptionLabel.text = description
+    descriptionLabel.isHidden = description == nil
+    
+    imageView.image = image
+    
+    nextButton.setTitle(buttonTitle, for: .normal)
+    nextButton.isHidden = buttonTitle == nil
   }
   
 }
