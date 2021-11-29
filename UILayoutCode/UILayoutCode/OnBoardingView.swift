@@ -14,6 +14,7 @@ class OnBoardingView: UIView {
   }
   
   private let customView = UIView()
+  var completionHandler: (() -> Void)?
   
   private let verticalStackView: UIStackView = {
     let stackView = UIStackView()
@@ -59,7 +60,7 @@ class OnBoardingView: UIView {
     return label
   }()
   
-  private let nextButton: UIButton = {
+  @objc private let nextButton: UIButton = {
     let button = UIButton()
     button.setTitle("Дальше", for: .normal)
     button.layer.cornerRadius = 25
@@ -71,7 +72,7 @@ class OnBoardingView: UIView {
   override init(frame: CGRect) {
     super.init(frame: .zero)
     backgroundColor = .systemBackground
-  
+    
     addingSubviewsForAutoLayout([
       verticalStackView.addingArrangedSubviews([
         imageView,
@@ -102,10 +103,12 @@ class OnBoardingView: UIView {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+ 
   @objc
   private func nextAction() {
     print("PRESS")
+    completionHandler?()
+    reloadInputViews()
   }
   
   public func configure(

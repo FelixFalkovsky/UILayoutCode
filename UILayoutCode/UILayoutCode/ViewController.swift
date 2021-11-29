@@ -13,10 +13,15 @@ class ViewController: UIViewController {
   
   var onboarding: OnBoardingView { return self.view as! OnBoardingView }
   
+  var completionHandler: (() -> Void)?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-    self.view.addSubview(onBoarding)
+    onBoarding.completionHandler = { [weak self] in
+      guard let reload = self else { return }
+     
+    }
     
   }
   
@@ -24,4 +29,12 @@ class ViewController: UIViewController {
     self.view = OnBoardingView(frame: UIScreen.main.bounds)
   }
 
+  private func reloadOnBoarding() {
+    onboarding.configure(
+      title: "Новое",
+      description: "Описание",
+      image: UIImage(named: "onBoardingOne")!,
+      buttonTitle: "Понятно")
+  }
+  
 }
