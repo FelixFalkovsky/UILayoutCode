@@ -18,7 +18,10 @@
 		DC2EB755274BB6DE008FD47A /* UILayoutCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2EB754274BB6DE008FD47A /* UILayoutCodeUITests.swift */; };
 		DC2EB757274BB6DE008FD47A /* UILayoutCodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2EB756274BB6DE008FD47A /* UILayoutCodeUITestsLaunchTests.swift */; };
 		DC2EB764274BB74C008FD47A /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2EB763274BB74C008FD47A /* OnBoardingView.swift */; };
-		DC63C0312777953B0043A753 /* OnBoardingCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC63C0302777953B0043A753 /* OnBoardingCollectionController.swift */; };
+		DC63C0312777953B0043A753 /* OnBoardingViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC63C0302777953B0043A753 /* OnBoardingViewController1.swift */; };
+		DC63C035277888FD0043A753 /* OnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC63C034277888FD0043A753 /* OnBoardingViewController2.swift */; };
+		DC63C03727788F0A0043A753 /* OnBoardingViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC63C03627788F0A0043A753 /* OnBoardingViewController3.swift */; };
+		DC63C03927788F550043A753 /* OnBoardingViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC63C03827788F550043A753 /* OnBoardingViewController4.swift */; };
 		DC81868B27523886000D7883 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81868A27523886000D7883 /* UIView+Extension.swift */; };
 		DC81868D275238E1000D7883 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81868C275238E1000D7883 /* UIStackView+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -56,7 +59,10 @@
 		DC2EB754274BB6DE008FD47A /* UILayoutCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayoutCodeUITests.swift; sourceTree = "<group>"; };
 		DC2EB756274BB6DE008FD47A /* UILayoutCodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayoutCodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DC2EB763274BB74C008FD47A /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
-		DC63C0302777953B0043A753 /* OnBoardingCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionController.swift; sourceTree = "<group>"; };
+		DC63C0302777953B0043A753 /* OnBoardingViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController1.swift; sourceTree = "<group>"; };
+		DC63C034277888FD0043A753 /* OnBoardingViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController2.swift; sourceTree = "<group>"; };
+		DC63C03627788F0A0043A753 /* OnBoardingViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController3.swift; sourceTree = "<group>"; };
+		DC63C03827788F550043A753 /* OnBoardingViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController4.swift; sourceTree = "<group>"; };
 		DC81868A27523886000D7883 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		DC81868C275238E1000D7883 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +97,10 @@
 			children = (
 				DC2EB763274BB74C008FD47A /* OnBoardingView.swift */,
 				DC20CE36275B963400D71E0E /* OnBoardingViewController.swift */,
-				DC63C0302777953B0043A753 /* OnBoardingCollectionController.swift */,
+				DC63C0302777953B0043A753 /* OnBoardingViewController1.swift */,
+				DC63C034277888FD0043A753 /* OnBoardingViewController2.swift */,
+				DC63C03627788F0A0043A753 /* OnBoardingViewController3.swift */,
+				DC63C03827788F550043A753 /* OnBoardingViewController4.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -291,10 +300,13 @@
 			files = (
 				DC2EB738274BB6DD008FD47A /* ViewController.swift in Sources */,
 				DC2EB734274BB6DD008FD47A /* AppDelegate.swift in Sources */,
-				DC63C0312777953B0043A753 /* OnBoardingCollectionController.swift in Sources */,
+				DC63C03927788F550043A753 /* OnBoardingViewController4.swift in Sources */,
+				DC63C0312777953B0043A753 /* OnBoardingViewController1.swift in Sources */,
 				DC20CE37275B963400D71E0E /* OnBoardingViewController.swift in Sources */,
+				DC63C035277888FD0043A753 /* OnBoardingViewController2.swift in Sources */,
 				DC2EB736274BB6DD008FD47A /* SceneDelegate.swift in Sources */,
 				DC81868B27523886000D7883 /* UIView+Extension.swift in Sources */,
+				DC63C03727788F0A0043A753 /* OnBoardingViewController3.swift in Sources */,
 				DC2EB764274BB74C008FD47A /* OnBoardingView.swift in Sources */,
 				DC81868D275238E1000D7883 /* UIStackView+Extension.swift in Sources */,
 			);

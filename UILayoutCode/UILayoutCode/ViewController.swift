@@ -35,9 +35,9 @@ class ViewController: UIPageViewController {
     
     pageControl.addTarget(self, action: #selector(pageControlTapped(_:)), for: .valueChanged)
     
-    let page1 = OnBoardingCollectionController()
-    let page2 = OnBoardingCollectionController()
-    let page3 = OnBoardingCollectionController()
+    let page1 = OnBoardingViewController1()
+    let page2 = OnBoardingViewController1()
+    let page3 = OnBoardingViewController1()
     
     pages.append(page1)
     pages.append(page2)

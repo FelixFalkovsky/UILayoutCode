@@ -133,14 +133,14 @@ class OnBoardingView: UIView {
   private func nextAction() {
     print("PRESS")
     completionHandler?()
-    reloadInputViews()
   }
   
   public func configure(
     title: String?,
     description: String?,
     image: UIImage,
-    buttonTitle: String?
+    buttonTitle: String?,
+    tapButton: @escaping () -> Void
   ) {
     titleLabel.text = title
     titleLabel.isHidden = title == nil
@@ -152,6 +152,8 @@ class OnBoardingView: UIView {
     
     nextButton.setTitle(buttonTitle, for: .normal)
     nextButton.isHidden = buttonTitle == nil
+    
+   // completionHandler = tapButton
   }
   
 }

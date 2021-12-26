@@ -10,11 +10,15 @@ import UIKit
 
 class OnBoardingViewController: UIViewController, UIScrollViewDelegate {
   
-  let onBoarding = OnBoardingCollectionController()
   let sceneWidth = UIScreen.main.bounds.width
   let sceneHeight = UIScreen.main.bounds.height
   let scrollView: UIScrollView = UIScrollView()
-  var colors: [UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
+  var slides: [UIViewController] = [
+    OnBoardingViewController1(),
+    OnBoardingViewController2(),
+    OnBoardingViewController3(),
+    OnBoardingViewController4()
+  ]
   var pageControl = UIPageControl()
   
   override func viewDidLoad() {
@@ -27,32 +31,22 @@ class OnBoardingViewController: UIViewController, UIScrollViewDelegate {
     self.view.addSubview(scrollView)
     
     for index in 0..<4 {
-      view.frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
-      view.frame.size = self.scrollView.frame.size
-      self.scrollView.addSubview(onBoarding.view)
+      slides[index].view.frame = CGRect(x: view.frame.width * CGFloat(index), y: 0, width: sceneWidth, height: sceneHeight)
+      scrollView.addSubview(slides[index].view)
     }
     
     self.scrollView.isPagingEnabled = true
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width * 4, height: self.scrollView.frame.size.height)
     pageControl.addTarget(self, action: #selector(self.changePage), for: .touchDragInside)
-    
-    NSLayoutConstraint.activate([
-      onBoarding.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      onBoarding.view.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      onBoarding.view.topAnchor.constraint(equalTo: view.topAnchor),
-      onBoarding.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-    ])
-    
   }
   
   func configurePageControl() {
-    self.pageControl.numberOfPages = colors.count
+    self.pageControl.numberOfPages = slides.count
     self.pageControl.currentPage = 0
     self.pageControl.tintColor = UIColor.gray
     self.pageControl.pageIndicatorTintColor = UIColor.black
     self.pageControl.currentPageIndicatorTintColor = UIColor.green
     self.view.addSubview(pageControl)
-    
   }
   
   func settingsScene() {
@@ -61,7 +55,6 @@ class OnBoardingViewController: UIViewController, UIScrollViewDelegate {
     
     self.scrollView.isPagingEnabled = true
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width * 4, height: self.scrollView.frame.size.height)
-    
   }
   
   @objc

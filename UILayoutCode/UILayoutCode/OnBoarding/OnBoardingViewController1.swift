@@ -8,32 +8,21 @@
 import Foundation
 import UIKit
 
-class OnBoardingCollectionController: UIViewController, UIScrollViewDelegate {
-  
-  private let scrollView: UIScrollView = {
-    let scrollView = UIScrollView()
-    scrollView.isMultipleTouchEnabled = true
-    scrollView.isUserInteractionEnabled = true
-    scrollView.contentMode = .scaleAspectFill
-    scrollView.isScrollEnabled = true
-    scrollView.showsHorizontalScrollIndicator = false
-    scrollView.showsVerticalScrollIndicator = false
-    scrollView.translatesAutoresizingMaskIntoConstraints = false
-    scrollView.backgroundColor = .systemBackground
-    return scrollView
-  }()
+class OnBoardingViewController1: UIViewController {
   
   var onBoardingView = OnBoardingView()
+ 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    scrollView.delegate = self
     
     onBoardingView.configure(
-      title: "asd",
-      description: "asd",
+      title: "1",
+      description: "1",
       image: UIImage(named: "onBoardingOne")!,
-      buttonTitle: "asd")
+      buttonTitle: "1", tapButton: {
+        
+      })
     
     view.addSubviewsForAutoLayout([
       onBoardingView
@@ -46,6 +35,5 @@ class OnBoardingCollectionController: UIViewController, UIScrollViewDelegate {
       onBoardingView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ])
   }
-  
   
 }
