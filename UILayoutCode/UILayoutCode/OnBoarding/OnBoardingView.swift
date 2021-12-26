@@ -7,7 +7,9 @@
 
 import UIKit
 
-class OnBoardingView: UIView, UIScrollViewDelegate {
+// Оставить только UI часть одной View и создать еще одну View d которой будет лежать ScrollView + View 
+
+class OnBoardingView: UIView {
   
   public override var intrinsicContentSize: CGSize {
     .init(width: UIView.layoutFittingExpandedSize.width, height: super.intrinsicContentSize.height)
@@ -15,19 +17,6 @@ class OnBoardingView: UIView, UIScrollViewDelegate {
   
   private let customView = UIView()
   var completionHandler: (() -> Void)?
-  
-  private let scrollView: UIScrollView = {
-    let scrollView = UIScrollView()
-    scrollView.isMultipleTouchEnabled = true
-    scrollView.isUserInteractionEnabled = true
-    scrollView.contentMode = .scaleAspectFill
-    scrollView.isScrollEnabled = true
-    scrollView.showsHorizontalScrollIndicator = false
-    scrollView.showsVerticalScrollIndicator = false
-    scrollView.translatesAutoresizingMaskIntoConstraints = false
-    scrollView.backgroundColor = .systemBackground
-    return scrollView
-  }()
   
   private let view: UIView = {
     let view = UIView()
@@ -40,8 +29,6 @@ class OnBoardingView: UIView, UIScrollViewDelegate {
     imageView.isUserInteractionEnabled = true
     imageView.contentMode = .scaleAspectFill
     imageView.image = UIImage()
-    imageView.backgroundColor = .systemBlue
-//    imageView.systemLayoutSizeFitting(CGSize(width: 251, height: 251), withHorizontalFittingPriority: CGSize(251), verticalFittingPriority: 251)
     return imageView
   }()
   
@@ -49,7 +36,8 @@ class OnBoardingView: UIView, UIScrollViewDelegate {
     let stackView = UIStackView()
     stackView.axis = .vertical
     stackView.alignment = .fill
-    stackView.isLayoutMarginsRelativeArrangement = false
+    stackView.distribution = .equalSpacing
+    stackView.isLayoutMarginsRelativeArrangement = true
     return stackView
   }()
   
@@ -57,14 +45,15 @@ class OnBoardingView: UIView, UIScrollViewDelegate {
     let stackView = UIStackView()
     stackView.axis = .vertical
     stackView.alignment = .center
-    stackView.isLayoutMarginsRelativeArrangement = false
+    stackView.spacing = 15
+    stackView.isLayoutMarginsRelativeArrangement = true
     return stackView
   }()
   
   private var imageView: UIImageView = {
     let imageView = UIImageView()
     imageView.image = UIImage(named: "onBoardingFier")
-    imageView.contentMode = .scaleToFill
+    imageView.contentMode = .scaleAspectFit
     return imageView
   }()
   
@@ -81,6 +70,7 @@ class OnBoardingView: UIView, UIScrollViewDelegate {
   private let descriptionLabel: UILabel = {
     let label = UILabel()
     label.text = "8 самых популярных программ питания со всего мира"
+    label.font = UIFont.boldSystemFont(ofSize: 14)
     label.textColor = UIColor.black
     label.textAlignment = .center
     label.numberOfLines = 3
@@ -88,7 +78,7 @@ class OnBoardingView: UIView, UIScrollViewDelegate {
     return label
   }()
   
-  @objc private let nextButton: UIButton = {
+  private let nextButton: UIButton = {
     let button = UIButton()
     button.setTitle("Дальше", for: .normal)
     button.layer.cornerRadius = 25
@@ -100,69 +90,45 @@ class OnBoardingView: UIView, UIScrollViewDelegate {
   override init(frame: CGRect) {
     super.init(frame: .zero)
     backgroundColor = .systemBackground
-    scrollView.delegate = self
-    addSubview(view)
-    addSubview(bgImageView)
-    view.addSubview(scrollView)
-    view.addSubview(bgImageView)
-    scrollView.addSubview(verticalStackView)
-    verticalStackView.addSubview(imageView)
     
-  //  addingSubviewsForAutoLayout([
-     // scrollView.addingSubviewsForAutoLayout([
-//        verticalStackView.addingArrangedSubviews([
-//          imageView,
-//          contentTextStackView.addingArrangedSubviews([
-//            titleLabel,
-//            descriptionLabel
-//          ])
-//        ]),
-//        nextButton
-     // ])
-   // ])
+    addingSubviewsForAutoLayout([
+      verticalStackView.addingArrangedSubviews([
+        imageView,
+        contentTextStackView.addingArrangedSubviews([
+          titleLabel,
+          descriptionLabel
+        ]),
+        nextButton
+      ]),
+    ])
     
     NSLayoutConstraint.activate([
-      view.topAnchor.constraint(equalTo: topAnchor),
-      view.bottomAnchor.constraint(equalTo: bottomAnchor),
-      view.leadingAnchor.constraint(equalTo: leadingAnchor),
-      view.trailingAnchor.constraint(equalTo: trailingAnchor),
-      view.centerXAnchor.constraint(equalTo: centerXAnchor),
-      view.centerYAnchor.constraint(equalTo: centerYAnchor),
-      
-      bgImageView.widthAnchor.constraint(equalToConstant: 400),
-      bgImageView.heightAnchor.constraint(equalToConstant: 400),
-      
-      scrollView.topAnchor.constraint(equalTo: topAnchor),
-      scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-      scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      scrollView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height),
-      scrollView.widthAnchor.constraint(equalToConstant: 900),
-
-      verticalStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-      verticalStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-      verticalStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-      verticalStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+ 
+      verticalStackView.topAnchor.constraint(equalTo: topAnchor),
+      verticalStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+      verticalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
       imageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 2),
-      imageView.topAnchor.constraint(equalTo: verticalStackView.topAnchor),
-      imageView.leadingAnchor.constraint(equalTo: verticalStackView.leadingAnchor),
-      imageView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor),
-//
-//      nextButton.heightAnchor.constraint(equalToConstant: 50),
-//      nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-//      nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-//      nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+      imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+      imageView.topAnchor.constraint(equalTo: verticalStackView.topAnchor, constant: -44),
+      imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      
+      nextButton.heightAnchor.constraint(equalToConstant: 50),
+      nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+      nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
     ])
-    titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-    descriptionLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        descriptionLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
   }
   
   @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
- 
+  
   @objc
   private func nextAction() {
     print("PRESS")
